@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dasar/page_ketiga.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,79 +25,31 @@ class MyApp extends StatelessWidget {
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
       ),
-      home: PageUtama(),
+      home: PageWidgetContainer(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class PageUtama extends StatelessWidget {
+class PageWidgetContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: new Center(
-          child: Column(
-            children: <Widget>[
-              MaterialButton(
-                  onPressed: () {
-                    //seperti intent di android
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => PagePertama()));
-                  }, child: Text('Page Pertama'),
-                  color: Colors.lightGreen,
-                  textColor: Colors.white),
-              MaterialButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => PageKedua()));
-                }, child: Text('Page Kedua'),
-                color: Colors.red,
-                textColor: Colors.white,),
-              MaterialButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => PageKetiga()));
-                }, child: Text('Page Ketiga'),
-                color: Colors.yellow,
-                textColor: Colors.white,)
-            ],
-          ),
-        )
-    );
-  }
-}
-
-class PagePertama extends StatefulWidget {
-  @override
-  _PagePertamaState createState() => _PagePertamaState();
-}
-
-class _PagePertamaState extends State<PagePertama> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-          child: new Text('Halaman Pertama')
+      body: new Container(
+        color: Colors.black,
+        child: new Text('My Container'),
+        width: 300.0,
+        height: 500.0,
+        alignment: Alignment.center,
+        padding: const EdgeInsets.all(20),
+        foregroundDecoration: new BoxDecoration(
+          color: Colors.lightGreen
+        ),
       ),
     );
   }
 }
 
-class PageKedua extends StatefulWidget {
-  @override
-  _PageKeduaState createState() => _PageKeduaState();
-}
-
-class _PageKeduaState extends State<PageKedua> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-          child: new Text('Halaman Kedua')
-      ),
-    );
-  }
-}
 
 
 

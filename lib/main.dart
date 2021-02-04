@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,30 +26,36 @@ class MyApp extends StatelessWidget {
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
       ),
-      home: PageWidgetContainer(),
+      home: PageRowColumn(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class PageWidgetContainer extends StatelessWidget {
+// column -> vertical, row -> horizontal
+class PageRowColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: new Container(
-        color: Colors.black,
-        child: new Text('My Container'),
-        width: 300.0,
-        height: 500.0,
-        alignment: Alignment.center,
-        padding: const EdgeInsets.all(20),
-        foregroundDecoration: new BoxDecoration(
-          color: Colors.lightGreen
-        ),
+      body: new Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          new Text('Ini adalah Row'),
+          new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Text('This'),
+              new Text('is'),
+              new Text('Column'),
+            ],
+          ),
+          new Text('Row')
+        ],
       ),
     );
   }
 }
+
 
 
 

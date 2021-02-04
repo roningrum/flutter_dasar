@@ -26,39 +26,40 @@ class MyApp extends StatelessWidget {
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
       ),
-      home: PageListWidget(),
+      home: PageGridView(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class PageListWidget extends StatefulWidget {
+class PageGridView extends StatefulWidget {
   @override
-  _PageListWidgetState createState() => _PageListWidgetState();
+  _PageGridViewState createState() => _PageGridViewState();
 }
 
-class _PageListWidgetState extends State<PageListWidget> {
-  List<int> item = new List();
+class _PageGridViewState extends State<PageGridView> {
+  List<int> itemGrid = new List();
 
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-    for (int i = 0; i < 25; i++) {
-      item.add(i);
+    for(int i =0; i<30; i++){
+      itemGrid.add(i);
+
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: new ListView.builder(
-          itemCount: item.length,
-          itemBuilder: (BuildContext context, int index) {
-            return new ListTile(
-              title: new Text('Item Nomor : $index'),
-              trailing: new Icon(Icons.print),
+      body: new GridView.builder(
+          gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4), itemBuilder:(BuildContext context, int index){
+            return new Card(
+              color: Colors.green,
+              child: new Padding(padding: const EdgeInsets.all(25)),
             );
-          }),
+      }),
     );
   }
 }

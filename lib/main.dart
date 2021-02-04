@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dasar/page_ketiga.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,58 +26,81 @@ class MyApp extends StatelessWidget {
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
       ),
-      home: PageStateFull(),
+      home: PageUtama(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class PageStateless extends StatelessWidget {
+class PageUtama extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: new Container(
-        color: Colors.blueAccent,
-        child: new Container(
-          color: Colors.green,
-          margin: const EdgeInsets.all(50.0),
-        ),
+        body: new Center(
+          child: Column(
+            children: <Widget>[
+              MaterialButton(
+                  onPressed: () {
+                    //seperti intent di android
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => PagePertama()));
+                  }, child: Text('Page Pertama'),
+                  color: Colors.lightGreen,
+                  textColor: Colors.white),
+              MaterialButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => PageKedua()));
+                }, child: Text('Page Kedua'),
+                color: Colors.red,
+                textColor: Colors.white,),
+              MaterialButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => PageKetiga()));
+                }, child: Text('Page Ketiga'),
+                color: Colors.yellow,
+                textColor: Colors.white,)
+            ],
+          ),
+        )
+    );
+  }
+}
+
+class PagePertama extends StatefulWidget {
+  @override
+  _PagePertamaState createState() => _PagePertamaState();
+}
+
+class _PagePertamaState extends State<PagePertama> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+          child: new Text('Halaman Pertama')
       ),
     );
   }
 }
 
-class PageStateFull extends StatefulWidget {
+class PageKedua extends StatefulWidget {
   @override
-  _PageStateFullState createState() => _PageStateFullState();
+  _PageKeduaState createState() => _PageKeduaState();
 }
 
-class _PageStateFullState extends State<PageStateFull> {
-  String teks = '';
-
-  @override
-  void initState() {
-    super.initState();
-    teks = 'Klik tombol ini';
-  }
-
-  void methodChange() {
-    setState(() {
-      teks = 'Teks telah berubah';
-    });
-  }
-
+class _PageKeduaState extends State<PageKedua> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: new Center(
-        child: new MaterialButton(
-            color: Colors.green,
-            textColor: Colors.white,
-            onPressed: () {
-              methodChange();
-            }, child: Text(teks),),
+      body: Center(
+          child: new Text('Halaman Kedua')
       ),
     );
   }
 }
+
+
+
+
+

@@ -43,33 +43,21 @@ class PageList extends StatelessWidget {
            trailing: Icon(Icons.fastfood),
           ),
           new ListTile(
-            title: Text('Rendang'),
-            trailing: Icon(Icons.fastfood),
+            title: Text('Minuman'),
+            trailing: Icon(Icons.local_drink),
           ),
           new ListTile(
-            title: Text('Rendang'),
-            trailing: Icon(Icons.fastfood),
+            title: Text('Phone'),
+            trailing: Icon(Icons.phone),
           ),
           new ListTile(
-            title: Text('Rendang'),
-            trailing: Icon(Icons.fastfood),
+            title: Text('Alarm'),
+            trailing: Icon(Icons.alarm),
           ),
           new ListTile(
-            title: Text('Rendang'),
-            trailing: Icon(Icons.fastfood),
-          ),
-          new ListTile(
-            title: Text('Rendang'),
-            trailing: Icon(Icons.fastfood),
-          ),
-          new ListTile(
-            title: Text('Rendang'),
-            trailing: Icon(Icons.fastfood),
-          ),
-          new ListTile(
-            title: Text('Rendang'),
-            trailing: Icon(Icons.fastfood),
-          ),
+            title: Text('Camera'),
+            trailing: Icon(Icons.camera),
+          )
         ],
       ),
     );

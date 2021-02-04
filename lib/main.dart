@@ -26,35 +26,56 @@ class MyApp extends StatelessWidget {
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
       ),
-      home: PageRowColumn(),
+      home: PageList(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-// column -> vertical, row -> horizontal
-class PageRowColumn extends StatelessWidget {
+class PageList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: new Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          new Text('Ini adalah Row'),
-          new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              new Text('This'),
-              new Text('is'),
-              new Text('Column'),
-            ],
+      body: new ListView(
+        children:<Widget>[
+          new ListTile(
+            title: Text('Rendang'),
+           trailing: Icon(Icons.fastfood),
           ),
-          new Text('Row')
+          new ListTile(
+            title: Text('Rendang'),
+            trailing: Icon(Icons.fastfood),
+          ),
+          new ListTile(
+            title: Text('Rendang'),
+            trailing: Icon(Icons.fastfood),
+          ),
+          new ListTile(
+            title: Text('Rendang'),
+            trailing: Icon(Icons.fastfood),
+          ),
+          new ListTile(
+            title: Text('Rendang'),
+            trailing: Icon(Icons.fastfood),
+          ),
+          new ListTile(
+            title: Text('Rendang'),
+            trailing: Icon(Icons.fastfood),
+          ),
+          new ListTile(
+            title: Text('Rendang'),
+            trailing: Icon(Icons.fastfood),
+          ),
+          new ListTile(
+            title: Text('Rendang'),
+            trailing: Icon(Icons.fastfood),
+          ),
         ],
       ),
     );
   }
 }
+
 
 
 

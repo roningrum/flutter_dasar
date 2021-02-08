@@ -49,7 +49,6 @@ class _PageGridViewState extends State<PageGridView> {
 
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +57,12 @@ class _PageGridViewState extends State<PageGridView> {
         backgroundColor: Colors.yellow,
         titleSpacing: 50.0,
         elevation: 35.0,
-        toolbarOpacity: 0.5,
+        // toolbarOpacity: 0.5,
+        //menambahkan action bar
+        actions: <Widget>[
+          new IconButton(icon: Icon(Icons.menu), onPressed: (){}),
+          new IconButton(icon: Icon(Icons.data_usage), onPressed: (){}),
+        ],
       ),
       body: new GridView.builder(
           gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4), itemBuilder:(BuildContext context, int index){

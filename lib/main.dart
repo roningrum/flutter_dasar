@@ -26,51 +26,106 @@ class MyApp extends StatelessWidget {
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
       ),
-      home: PageGridView(),
+      home: PageTabBar(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class PageGridView extends StatefulWidget {
+class PageTabBar extends StatefulWidget {
   @override
-  _PageGridViewState createState() => _PageGridViewState();
+  _PageTabBarState createState() => _PageTabBarState();
 }
 
-class _PageGridViewState extends State<PageGridView> {
-  List<int> itemGrid = new List();
+class _PageTabBarState extends State<PageTabBar>
+    with SingleTickerProviderStateMixin {
+  TabController tabController;
+  int _selectedIndex;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    for(int i =0; i<30; i++){
-      itemGrid.add(i);
-
-    }
+    tabController = new TabController(length: 4, vsync: this);
+    _selectedIndex = 0;
   }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Page Grid View"),
-        backgroundColor: Colors.yellow,
-        titleSpacing: 50.0,
-        elevation: 35.0,
-        // toolbarOpacity: 0.5,
-        //menambahkan action bar
-        actions: <Widget>[
-          new IconButton(icon: Icon(Icons.menu), onPressed: (){}),
-          new IconButton(icon: Icon(Icons.data_usage), onPressed: (){}),
-        ],
+        title: Text("Tab Bar Apps"),
+        bottom: new TabBar(controller: tabController, tabs: <Widget>[
+          new Tab(icon: new Icon(Icons.home)),
+          new Tab(icon: new Icon(Icons.dashboard)),
+          new Tab(icon: new Icon(Icons.data_usage)),
+          new Tab(icon: new Icon(Icons.close))
+        ]),
       ),
-      body: new GridView.builder(
-          gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4), itemBuilder:(BuildContext context, int index){
-            return new Card(
-              color: Colors.green,
-              child: new Padding(padding: const EdgeInsets.all(25)),
-            );
-      }),
+      body: new TabBarView(controller: tabController, children: <Widget>[
+        new HomePage(_selectedIndex),
+        new DashBoardPage(_selectedIndex),
+        new DataPage(_selectedIndex),
+        new ClosePage(_selectedIndex),
+      ]),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  final int index;
+
+  HomePage(this.index);
+
+  @override
+  Widget build(BuildContext context) {
+    return new Center(
+      child: new Text('Welcome to Home, index: $index'),
+    );
+  }
+}
+
+class DashBoardPage extends StatelessWidget {
+  final int index;
+
+  DashBoardPage(this.index);
+
+  @override
+  Widget build(BuildContext context) {
+    return new Center(
+      child: new Text('Welcome to Dashboard, index: $index'),
+    );
+  }
+}
+
+class DataPage extends StatelessWidget {
+  final int index;
+
+  DataPage(this.index);
+
+  @override
+  Widget build(BuildContext context) {
+    return new Center(
+      child: new Text('Welcome to Data, index: $index'),
+    );
+  }
+}
+
+class ClosePage extends StatelessWidget {
+  final int index;
+
+  ClosePage(this.index);
+
+  @override
+  Widget build(BuildContext context) {
+    return new Center(
+      child: new Text('Welcome to Close, index: $index'),
     );
   }
 }

@@ -26,41 +26,16 @@ class MyApp extends StatelessWidget {
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
       ),
-      home: PageInputWidget(),
+      home: PageButton(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
-class PageInputWidget extends StatefulWidget {
-  @override
-  _PageInputWidgetState createState() => _PageInputWidgetState();
-}
 
-class _PageInputWidgetState extends State<PageInputWidget> {
-  String txt = '';
+class PageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green,
-        title: new Text('Page Input Widget'),
-      ),
-      body: new Column(
-        children: <Widget>[
-          new TextField(
-            onChanged: (String text){
-              setState(() {
-                txt = text;
-              });
-            },
-            decoration: new InputDecoration(hintText: 'Nama',
-            labelText: 'username'),
-          ),
-          SizedBox(height: 10.0),
-          new Text(txt)
-        ]
-      ),
-    );
+    return Container();
   }
 }
 

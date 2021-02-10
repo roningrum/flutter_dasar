@@ -26,106 +26,41 @@ class MyApp extends StatelessWidget {
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
       ),
-      home: PageTabBar(),
+      home: PageInputWidget(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
-
-class PageTabBar extends StatefulWidget {
+class PageInputWidget extends StatefulWidget {
   @override
-  _PageTabBarState createState() => _PageTabBarState();
+  _PageInputWidgetState createState() => _PageInputWidgetState();
 }
 
-class _PageTabBarState extends State<PageTabBar>
-    with SingleTickerProviderStateMixin {
-  TabController tabController;
-  int _selectedIndex;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    tabController = new TabController(length: 4, vsync: this);
-    _selectedIndex = 0;
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
+class _PageInputWidgetState extends State<PageInputWidget> {
+  String txt = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tab Bar Apps"),
-        bottom: new TabBar(controller: tabController, tabs: <Widget>[
-          new Tab(icon: new Icon(Icons.home)),
-          new Tab(icon: new Icon(Icons.dashboard)),
-          new Tab(icon: new Icon(Icons.data_usage)),
-          new Tab(icon: new Icon(Icons.close))
-        ]),
+        backgroundColor: Colors.green,
+        title: new Text('Page Input Widget'),
       ),
-      body: new TabBarView(controller: tabController, children: <Widget>[
-        new HomePage(_selectedIndex),
-        new DashBoardPage(_selectedIndex),
-        new DataPage(_selectedIndex),
-        new ClosePage(_selectedIndex),
-      ]),
+      body: new Column(
+        children: <Widget>[
+          new TextField(
+            onChanged: (String text){
+              setState(() {
+                txt = text;
+              });
+            },
+            decoration: new InputDecoration(hintText: 'Nama',
+            labelText: 'username'),
+          ),
+          SizedBox(height: 10.0),
+          new Text(txt)
+        ]
+      ),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
-  final int index;
-
-  HomePage(this.index);
-
-  @override
-  Widget build(BuildContext context) {
-    return new Center(
-      child: new Text('Welcome to Home, index: $index'),
-    );
-  }
-}
-
-class DashBoardPage extends StatelessWidget {
-  final int index;
-
-  DashBoardPage(this.index);
-
-  @override
-  Widget build(BuildContext context) {
-    return new Center(
-      child: new Text('Welcome to Dashboard, index: $index'),
-    );
-  }
-}
-
-class DataPage extends StatelessWidget {
-  final int index;
-
-  DataPage(this.index);
-
-  @override
-  Widget build(BuildContext context) {
-    return new Center(
-      child: new Text('Welcome to Data, index: $index'),
-    );
-  }
-}
-
-class ClosePage extends StatelessWidget {
-  final int index;
-
-  ClosePage(this.index);
-
-  @override
-  Widget build(BuildContext context) {
-    return new Center(
-      child: new Text('Welcome to Close, index: $index'),
-    );
-  }
-}
